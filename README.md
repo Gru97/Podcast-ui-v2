@@ -1,0 +1,1 @@
+This is the second version of podacast ui. To get it up and running via Vuetify and Vuex.
