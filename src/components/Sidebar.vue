@@ -15,12 +15,18 @@
     </v-navigation-drawer>
     
 
-    <v-app-bar app color="teal" dark>
-      <v-spacer></v-spacer>
+    <v-app-bar app color="teal" dark class="navButton">
+      <v-toolbar-title class=""></v-toolbar-title>
+      <div>
+        <router-link :to="{name : 'Login'}"><span style="color:#fff">ثبت نام</span> /<span style="color:#fff"> ورود</span></router-link>
+      </div>
 
+      <v-spacer></v-spacer>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
 
-      <v-toolbar-title></v-toolbar-title>
+      
+
+
     </v-app-bar>
   </div>
 </template>
@@ -32,7 +38,7 @@ export default {
     source: String,
   },
   data: () => ({
-    drawer: null,
+    drawer: true,
     items: [
       { icon: "mdi-home",
         text: "صفحه اصلی",
@@ -41,25 +47,22 @@ export default {
       {
         icon: "mdi-music",
         text: "برترین پادکست ها",
-        type: 1,
         url: "",
       },
       {
         icon: "mdi-music-box-multiple",
         text: "برترین آلبوم ها",
-        type: 1,
         url: "",
       },
       {
         icon: "mdi-folder-open",
         text: "برترین کانال ها",
-        type: 1,
         url: "",
       },
     ],
   }),
   methods: {
-    gotothelink(type, url) {
+    gotothelink(url) {
         this.$router.push({ name: url });
     },
     
@@ -68,5 +71,7 @@ export default {
 </script>
 
 <style scoped>
-
+.navButton{
+  direction: ltr;
+}
 </style>
