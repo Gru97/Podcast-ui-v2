@@ -18,7 +18,7 @@
     <v-app-bar app color="teal" dark class="navButton">
       <v-toolbar-title class=""></v-toolbar-title>
       <div>
-        <router-link :to="{name : 'Login'}"><span style="color:#fff">ثبت نام</span> /<span style="color:#fff"> ورود</span></router-link>
+        <router-link :to="{name : 'Login'}"><span style="color:#fff">ثبت نام/ورود</span></router-link>
       </div>
 
       <v-spacer></v-spacer>
