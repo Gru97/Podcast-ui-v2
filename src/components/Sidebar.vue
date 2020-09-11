@@ -7,7 +7,7 @@
             <v-icon color="teal">{{ item.icon }}</v-icon>
           </v-list-item-icon>
             
-          <v-list-item-content>
+          <v-list-item-content @click="gotothelink(item.url)">
             <v-list-item-title>{{ item.text }}</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
@@ -16,11 +16,10 @@
     
 
     <v-app-bar app color="teal" dark class="navButton">
-      <v-toolbar-title class=""></v-toolbar-title>
-      <div>
+      <v-toolbar-title class="">
         <router-link :to="{name : 'Login'}"><span style="color:#fff">ثبت نام/ورود</span></router-link>
-      </div>
-
+      </v-toolbar-title>
+      
       <v-spacer></v-spacer>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
 
@@ -59,11 +58,16 @@ export default {
         text: "برترین کانال ها",
         url: "",
       },
+      {
+        icon: "mdi-folder-open",
+        text: "آپلود فایل",
+        url: "Channel",
+      },
     ],
   }),
   methods: {
     gotothelink(url) {
-        this.$router.push({ name: url });
+      this.$router.push({ name: url });
     },
     
   },

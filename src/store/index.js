@@ -59,14 +59,29 @@ export default new Vuex.Store({
         commit('auth_request')
         axios({ url: `${secondurl}/Account/login`, data: info, method: 'POST'  , headers: {Authorization: ''}})
           .then(resp => {
-            localStorage.clear();
-            delete axios.defaults.headers.common['Authorization']
+            const token = resp.data.data
+            localStorage.setItem('token', token)
+            axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
+            commit('auth_success', token)
             resolve(resp)
           })
           .catch(err => {
-            commit('auth_error', err)
+            commit('auth_error')
             localStorage.clear();
             delete axios.defaults.headers.common['Authorization']
+            reject(err)
+          })
+      })
+    },
+
+    addChannel({ commit }, info) {
+      return new Promise((resolve, reject) => {
+        commit('auth_request')
+        axios({ url: `${mainurl}/channel`, data: info, method: 'POST' })
+          .then(resp => {
+            resolve(resp)
+          })
+          .catch(err => {
             reject(err)
           })
       })
@@ -87,5 +102,9 @@ export default new Vuex.Store({
     },
   },
   modules: {
+  },
+  getters: {
+    isLoggedIn: state => !!state.token,
+    authStatus: state => state.status,
   }
 })

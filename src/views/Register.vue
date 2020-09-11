@@ -1,5 +1,6 @@
 <template>
   <v-app id="inspire">
+    <Sidebar/>
     <v-main>
       <v-container class="fill-height" fluid>
         <v-row align="center" justify="center">
@@ -51,7 +52,14 @@
 </template>
 
 <script>
+import Sidebar from '@/components/Sidebar.vue'
+
 export default {
+  name: 'Register',
+  components: {
+    Sidebar
+  },
+
   data() {
     return {
         email: '',

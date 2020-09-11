@@ -1,7 +1,7 @@
 <template>
   <div>
     <Sidebar/>
-    <v-main>
+    <!-- <v-main>
       <v-container>
         <v-sheet class="mx-auto" elevation="8" max-width="800">
           <v-slide-group v-model="model" class="pa-4" multiple show-arrows>
@@ -17,7 +17,7 @@
           </v-slide-group>
         </v-sheet>
       </v-container>
-    </v-main>
+    </v-main> -->
   </div>
 </template>
 
@@ -57,15 +57,15 @@ export default {
   },
 
   created() {
-    this.getLatestContents()
+    // this.getLatestContents()
   },
 
   methods: {
-    getLatestContents(cat = this.category[0]){
-        this.$store.dispatch("getContents" , cat.title , 'latest' , this.lcpage).then((res) => {
-          this.lcontents = res.data.data
-        });
-      }
+    // getLatestContents(cat = this.category[0]){
+    //     this.$store.dispatch("getContents" , cat.title , 'latest' , this.lcpage).then((res) => {
+    //       this.lcontents = res.data.data
+    //     });
+    //   }
   },
 }
 </script>

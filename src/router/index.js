@@ -1,9 +1,13 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import store from '../store'
 import Home from '../views/Home.vue'
 
 const Login = () => import('@/views/Login')
 const Register = () => import('@/views/Register')
+const Channel = () => import('@/views/channel/Channel')
+const NewChannel = () => import('@/views/channel/NewChannel')
+const NewAlbum = () => import('@/views/NewAlbum')
 
 Vue.use(VueRouter)
 
@@ -31,12 +35,37 @@ Vue.use(VueRouter)
     name: 'Register',
     component: Register
   },
+
+  {
+    path: '/channel',
+    name: 'Channel',
+    component: Channel,
+    meta: {
+      requiresAuth: true
+    },
+  },
+  {
+    path: '/NewChannel',
+    name: 'NewChannel',
+    component: NewChannel
+  },
+  {
+    path: '/NewAlbum',
+    name: 'NewAlbum',
+    component: NewAlbum
+  },
 ]
 
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes
+})
+
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(record => record.meta.requiresAuth) === true && store.getters.isLoggedIn === false) next({ name: 'Login' })
+  else next()
+  // return console.log(to.matched.some(record => record.meta.requiresAuth))
 })
 
 export default router
