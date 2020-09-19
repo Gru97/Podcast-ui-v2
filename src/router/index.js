@@ -5,7 +5,7 @@ import Home from '../views/Home.vue'
 
 const Login = () => import('@/views/Login')
 const Register = () => import('@/views/Register')
-const Channel = () => import('@/views/channel/Channel')
+const ChannelsList = () => import('@/views/channel/ChannelsList')
 const NewChannel = () => import('@/views/channel/NewChannel')
 const NewAlbum = () => import('@/views/NewAlbum')
 
@@ -37,9 +37,9 @@ Vue.use(VueRouter)
   },
 
   {
-    path: '/channel',
-    name: 'Channel',
-    component: Channel,
+    path: '/channelsList',
+    name: 'ChannelsList',
+    component: ChannelsList,
     meta: {
       requiresAuth: true
     },

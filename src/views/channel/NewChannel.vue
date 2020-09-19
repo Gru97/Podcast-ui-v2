@@ -95,17 +95,19 @@ export default {
     },
     addChannel() {
       this.loading = true;
-      let name = this.name;
-      let description = this.description;
-      let imageFile = this.imageFile;
-      this.$store.dispatch("addChannel", { name, description, imageFile })
+      let channelInfo = {
+        name : this.name,
+        description : this.description,
+        imageFile : this.imageFile
+       }
+      this.$store.dispatch("addChannel", channelInfo)
       .then(() => {
         this.$fire({
           title: "کانال با موفقیت ساخته شد...",
           type: "success",
-          confirmButtonText: "دوباره تلاش می‌کنم",
+          confirmButtonText: "باشه",
         })
-        this.$router.push({ name: "Album" });
+        this.$router.push({ name: "ChannelsList" });
       })
       .catch(() => {
         this.$fire({

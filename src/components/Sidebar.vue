@@ -61,7 +61,7 @@ export default {
       {
         icon: "mdi-folder-open",
         text: "آپلود فایل",
-        url: "Channel",
+        url: "ChannelsList",
       },
     ],
   }),

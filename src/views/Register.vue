@@ -82,7 +82,7 @@ export default {
         confirmPassword: this.confirmPassword
       };
       this.$store
-        .dispatch("register", data)
+        .dispatch("registerUser", data)
         .then((response) => {
             if(response.data.message){
                 this.$fire({
@@ -97,15 +97,15 @@ export default {
             this.loading = false;
             }
             else{
-          this.$fire({
-            title: "ثبت نام انجام شد",
-            text: "برای ورود ایمیل و رمز عبور خود را وارد نمایید",
-            type: "success",
-            confirmButtonText: "باشه",
-          }).then((r) => {
-            console.log(r.value);
-          });
-          this.$router.push("login");
+              this.$fire({
+                title: "ثبت نام انجام شد",
+                text: "برای ورود ایمیل و رمز عبور خود را وارد نمایید",
+                type: "success",
+                confirmButtonText: "باشه",
+              }).then((r) => {
+                console.log(r.value);
+              });
+              this.$router.push("login");
             }
         })
 

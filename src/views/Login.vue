@@ -68,7 +68,7 @@ export default {
         password: this.password,
       };
       this.$store
-        .dispatch("login", data)
+        .dispatch("loginUser", data)
         .then((response) => {
           if(response.data.message){
                 this.$fire({
