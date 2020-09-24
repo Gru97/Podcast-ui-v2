@@ -45,10 +45,11 @@
                     <v-col cols="12">
                       <v-btn
                         class="float-lg-left"
-                        color="teal"
+                        color="#EF5554"
                         @click="addChannel"
                         :loading="loading"
                       >ثبت</v-btn>
+                      
                     </v-col>
                   </v-row>
                 </v-container>

@@ -5,7 +5,7 @@ Vue.use(Vuex)
 
 import moduleAuth from './modules/moduleAuth.js'
 import moduleChannel from './modules/moduleChannel.js'
-
+import moduleAlbum from './modules/moduleAlbum.js'
 export default new Vuex.Store({
   state: {
   },
@@ -16,5 +16,6 @@ export default new Vuex.Store({
   modules: {
     auth: moduleAuth,
     channel: moduleChannel,
+    album:moduleAlbum
   }
 })

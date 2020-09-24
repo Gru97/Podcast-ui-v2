@@ -4,7 +4,7 @@
       <v-list>
         <v-list-item v-for="item in items" :key="item.title" link>
           <v-list-item-icon>
-            <v-icon color="teal">{{ item.icon }}</v-icon>
+            <v-icon color="#EF5554">{{ item.icon }}</v-icon>
           </v-list-item-icon>
             
           <v-list-item-content @click="gotothelink(item.url)">
@@ -15,10 +15,14 @@
     </v-navigation-drawer>
     
 
-    <v-app-bar app color="teal" dark class="navButton">
+    <v-app-bar app color="#EF5554" dark class="navButton">
       <v-toolbar-title class="">
-        <router-link :to="{name : 'Login'}"><span style="color:#fff">ثبت نام/ورود</span></router-link>
+        <router-link :to="{name : 'Login'}"><span style="color:#fff">
+          <v-icon color="#fff" left>mdi-account-circle</v-icon>
+          ثبت نام/ورود</span></router-link>
+        
       </v-toolbar-title>
+
       
       <v-spacer></v-spacer>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>

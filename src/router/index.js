@@ -7,7 +7,8 @@ const Login = () => import('@/views/Login')
 const Register = () => import('@/views/Register')
 const ChannelsList = () => import('@/views/channel/ChannelsList')
 const NewChannel = () => import('@/views/channel/NewChannel')
-const NewAlbum = () => import('@/views/NewAlbum')
+const NewAlbum = () => import('@/views/Album/NewAlbum')
+const ChannelDetail = () => import('@/views/channel/channelDetail')
 
 Vue.use(VueRouter)
 
@@ -50,9 +51,14 @@ Vue.use(VueRouter)
     component: NewChannel
   },
   {
-    path: '/NewAlbum',
+    path: '/NewAlbum/:cid',
     name: 'NewAlbum',
     component: NewAlbum
+  },
+  {
+    path: '/channelDetail/:id',
+    name: 'channelDetail',
+    component: ChannelDetail
   },
 ]
 

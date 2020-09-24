@@ -1,16 +1,16 @@
 <template>
   <v-app id="inspire">
-    <Sidebar/>
+    <Sidebar />
     <v-main>
       <v-container class="fill-height" fluid>
         <v-row align="center" justify="center">
-          <v-col cols="12" sm="8" md="4">
-            <v-card class="elevation-12">
-              <v-toolbar color="teal" dark flat>
-                <v-toolbar-title>ورود به سایت</v-toolbar-title>
-                <v-spacer></v-spacer>
-              </v-toolbar>
-              <v-card-text>
+          <v-card class="elevation-12 mx-auto" width="50%" outlined>
+            <v-toolbar color="#EF5554" dark flat>
+              <v-toolbar-title>ورود به سایت</v-toolbar-title>
+              <v-spacer></v-spacer>
+            </v-toolbar>
+            <v-list-item two-line>
+              <v-list-item-content class="mx-10">
                 <v-form>
                   <v-text-field
                     label="ایمیل"
@@ -27,14 +27,32 @@
                     type="password"
                   ></v-text-field>
                 </v-form>
-              </v-card-text>
-              <v-card-actions>
-                <v-spacer></v-spacer>
-                <v-btn color="teal" text @click="register">ثبت نام</v-btn>
-                <v-btn color="teal" class="vbtn" :loading="loading" @click="login">ورود</v-btn>
-              </v-card-actions>
-            </v-card>
-          </v-col>
+              </v-list-item-content>
+              <v-list-item-avatar tile size="250" color="grey">
+                <v-img
+                  height="300"
+                  width="300"
+                  src="https://cdn.vuetifyjs.com/images/cards/docks.jpg"
+                ></v-img>
+              </v-list-item-avatar>
+            </v-list-item>
+            <v-card-text> </v-card-text>
+            <v-card-actions>
+              <v-spacer></v-spacer>
+              <v-btn color="#EF5554" text @click="register" width="50"
+                >ثبت نام</v-btn
+              >
+              <v-btn
+                color="#EF5554"
+                class="vbtn"
+                :loading="loading"
+                @click="login"
+              >
+                <v-icon left>mdi-login-variant</v-icon>
+                ورود
+              </v-btn>
+            </v-card-actions>
+          </v-card>
         </v-row>
       </v-container>
     </v-main>
@@ -42,12 +60,12 @@
 </template>
 
 <script>
-import Sidebar from '@/components/Sidebar.vue'
+import Sidebar from "@/components/Sidebar.vue";
 
 export default {
-  name: 'Login',
+  name: "Login",
   components: {
-    Sidebar
+    Sidebar,
   },
 
   data() {
@@ -57,6 +75,7 @@ export default {
       loading: false,
     };
   },
+
   props: {
     source: String,
   },
@@ -70,23 +89,21 @@ export default {
       this.$store
         .dispatch("loginUser", data)
         .then((response) => {
-          if(response.data.message){
-                this.$fire({
-                title: "خطا !",
-                text: response.data.message,
-                type: "error",
-                confirmButtonText: "دوباره تلاش می‌کنم",
-                timer: 3000,
+          if (response.data.message) {
+            this.$fire({
+              title: "خطا !",
+              text: response.data.message,
+              type: "error",
+              confirmButtonText: "دوباره تلاش می‌کنم",
+              timer: 3000,
             }).then((r) => {
-                console.log(r.value);
+              console.log(r.value);
             });
             this.loading = false;
-            }
-            else{
-                this.$router.push("/");
-                console.log(response)
-            }
-
+          } else {
+            this.$router.push("/");
+            console.log(response);
+          }
         })
         .catch(() => {
           this.$fire({

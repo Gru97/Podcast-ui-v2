@@ -6,6 +6,9 @@ import vuetify from './plugins/vuetify';
 import VueSimpleAlert from "vue-simple-alert";
 //import VuePersianDatetimePicker from 'vue-persian-datetime-picker';
 import Axios from 'axios'
+//modal
+import vmodal from 'vue-js-modal'
+Vue.use(vmodal)
 
 Vue.use(VueSimpleAlert, { reverseButtons: true });
 
