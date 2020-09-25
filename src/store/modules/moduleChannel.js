@@ -13,8 +13,9 @@ let state = {
  mutations = {
     Channels_List(state, payload) {
         state.channels.push(payload)
+        // console.log(state.channels)
     },
-    Channel(state, payload) {
+    ChannelInfo(state, payload) {
 
         state.channel.push(payload)
     },
@@ -39,7 +40,7 @@ const actions = {
             axios({ url: `${mainurl}/channel/all?page=${page++}&pageSize=10`, method: 'Get' })
                 .then(res => {
                     resolve(res)
-                    commit('Channels_List', res.data)
+                    commit('Channels_List', res.data.items)
                 })
                 .catch(err => {
                     reject(err)
@@ -48,13 +49,24 @@ const actions = {
     },
 
     getChannelDetail({ commit }, payload) {
-
         return new Promise((resolve, reject) => {
             axios({ url: `${mainurl}/channel/${payload}`, method: 'Get' })
                 .then(res => {
                     resolve(res)
-                    commit('Channel', res.data)
+                    commit('ChannelInfo', res.data)
+                })
+                .catch(err => {
+                    reject(err)
+                })
+        })
+    },
 
+    deleteChannel({ commit }, id) {
+        commit('nothing')
+        return new Promise((resolve, reject) => {
+            axios({ url: `${mainurl}/channel/${id}`, method: 'DELETE' })
+                .then(res => {
+                    resolve(res)
                 })
                 .catch(err => {
                     reject(err)

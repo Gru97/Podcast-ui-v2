@@ -21,9 +21,27 @@
           <v-spacer></v-spacer>
         </v-card-text>
       </v-card>
-
+      
       <v-container>
         <v-row v-for="channel in channels" :key="channel.id" class="mb-5">
+
+          <v-dialog v-model="dialogDelete" max-width="400px">
+            <v-card>
+            
+              <v-card-title>
+                <v-container>
+                    <span>با حذف این کانال، تمامی آلبوم های آن حذف می شود. میخواهید ادامه دهید؟</span>
+                </v-container>
+              </v-card-title>
+
+              <v-card-actions>
+                <v-spacer></v-spacer>
+                <v-btn color="blue darken-1" text @click="close()">انصراف</v-btn>
+                <v-btn color="blue darken-1" text @click="deleteChanel(channel.id)">حذف</v-btn>
+              </v-card-actions>
+            </v-card>
+          </v-dialog>
+
           <v-card class="mx-auto" width="90%" outlined>
             <v-list-item two-line>
               <v-list-item-content class="mx-10">
@@ -66,7 +84,7 @@
               <v-btn color="#EF5554" text>
                 <v-icon color="#EF5554" right>mdi-pencil</v-icon>ویرایش
               </v-btn>
-              <v-btn color="#EF5554" text>
+              <v-btn color="#EF5554" text @click="dialogDelete = true">
                 <v-icon color="#EF5554" right>mdi-delete</v-icon>حذف
               </v-btn>
             </v-card-actions>
@@ -90,17 +108,19 @@ export default {
     return {
       page: 0,
       channels: [],
+      dialogDelete: false,
     };
   },
 
-  computed: {
-    
-  },
+  // computed:{
+  //   channelList() {
+  //     return this.$store.state.channel.channels
+  //   }
+  // },
 
   created() {
     this.$store.dispatch("getChannls", this.page).then((res) => {
       this.channels = res.data.items;
-      // console.log(this.channels)
     });
   },
   methods: {
@@ -108,9 +128,36 @@ export default {
       //console.log("channelID")
       this.$router.push({ name: "channelDetail", params: { id: channelID } });
     },
+
     imagepath(address) {
       return 'http://86.106.142.11:40000/' + address
     },
+
+    deleteChanel(id){
+      this.$store.dispatch("deleteChannel", id).then(() => {
+        this.close();
+        this.$fire({
+          title: "",
+          text: "کانال شما با موفقیت حذف شد",
+          type: "success",
+          confirmButtonText: "باشه",
+          timer: 3000,
+        })
+      }).catch(() => {
+          this.close();
+          this.$fire({
+            title: "",
+            text: "خطایی رخ اده است. لطفا مجدا امتحان کنید.",
+            type: "error",
+            confirmButtonText: "باشه",
+            timer: 3000,
+          })
+        })
+    },
+
+    close(){
+      this.dialogDelete = false;
+    }
   },
 };
 </script>
