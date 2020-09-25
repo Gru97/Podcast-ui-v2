@@ -44,8 +44,19 @@
                 <v-img
                   height="300"
                   width="300"
-                  src="https://cdn.vuetifyjs.com/images/cards/store.jpg"
-                ></v-img>
+                  :src="imagepath(channel.imageUrl)"
+                  :lazy-src="imagepath(channel.imageUrl)"
+                >
+                  <template v-slot:placeholder>
+                    <v-row
+                      class="fill-height ma-0"
+                      align="center"
+                      justify="center"
+                    >
+                      <v-progress-circular indeterminate color="grey lighten-5"></v-progress-circular>
+                    </v-row>
+                  </template>
+                </v-img>
               </v-list-item-avatar>
             </v-list-item>
             <v-card-actions>
@@ -83,9 +94,7 @@ export default {
   },
 
   computed: {
-    // imagepath(address) {
-    //   return 'http://86.106.142.11:40000/' + address
-    // },
+    
   },
 
   created() {
@@ -98,6 +107,9 @@ export default {
     channelDetail(channelID) {
       //console.log("channelID")
       this.$router.push({ name: "channelDetail", params: { id: channelID } });
+    },
+    imagepath(address) {
+      return 'http://86.106.142.11:40000/' + address
     },
   },
 };

@@ -45,6 +45,7 @@
                     <v-col cols="12">
                       <v-btn
                         class="float-lg-left"
+                        style="color: #fff;"
                         color="#EF5554"
                         @click="addChannel"
                         :loading="loading"
