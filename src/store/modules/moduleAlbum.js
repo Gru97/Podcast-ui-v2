@@ -7,13 +7,16 @@ Vue.use(Vuex)
 const mainurl = 'http://86.106.142.11:40000/api';
 
 let state = {
-    Albums: []
+    Albums: [],
+    album:{}
 }
 const mutations = {
-    Album_List(state , payload){
-        state.album.push(payload)
+  
+    albumInfo(state,payload){
+        state.album.push(payload);
     },
-    nothing(){}
+    nothing() { }
+
 }
 const actions = {
     ADD_ALBUM({ commit }, info) {
@@ -29,7 +32,48 @@ const actions = {
         })
     },
 
-    
+    DELETE_ALBUM({commit},id){
+        return new Promise((resolve, reject) => {
+            console.log('in axios/album id is:'+id)
+            commit('nothing')
+            axios({ url: `${mainurl}/album/${id}`, method: 'DELETE' })
+            .then(res => {
+                resolve(res)
+               
+            })
+            .catch(err => {
+                reject(err)
+            })
+        })
+    },
+
+
+    GET_ALBUM_DETAIL({ commit }, payload) {
+        return new Promise((resolve, reject) => {
+            axios({ url: `${mainurl}/album/${payload}`, method: 'Get' })
+                .then(res => {
+                    resolve(res)
+                    commit('albumInfo', res.data)
+                })
+                .catch(err => {
+                    reject(err)
+                })
+        })
+    },
+    /*
+    LIKE({ commit }) {
+        return new Promise((resolve, reject) => {
+            axios({ url: `${mainurl}/album`, method: 'PUT' })
+                .then(res => {
+                    resolve(res)
+                    commit('albumInfo', res.data)
+                })
+                .catch(err => {
+                    reject(err)
+                })
+        })
+    },
+   */
 
 }
 const modules = {

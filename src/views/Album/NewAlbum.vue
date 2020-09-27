@@ -231,7 +231,8 @@ export default {
         this.previewSrc = URL.createObjectURL(file[0]);
       };
     },
-    callFile() {
+  
+  callFile() {
       document.getElementById("fileInput").click();
     },
     addAlbum() {
@@ -247,8 +248,8 @@ export default {
         //free access ?!
         freeAccess: true,
       };
-      console.log("Album info is:");
-      console.log(albumInfo);
+     // console.log("Album info is:");
+     // console.log(albumInfo);
       this.$store
         .dispatch("ADD_ALBUM", albumInfo)
         .then(() => {

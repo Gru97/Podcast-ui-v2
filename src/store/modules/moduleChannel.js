@@ -10,17 +10,17 @@ let state = {
     channels: [],
     channel: {},
 },
- mutations = {
-    Channels_List(state, payload) {
-        state.channels.push(payload)
-        // console.log(state.channels)
-    },
-    ChannelInfo(state, payload) {
-
-        state.channel.push(payload)
-    },
-    nothing() { }
-}
+    mutations = {
+        Channels_List(state, payload) {
+            state.channels.push(payload)
+            // console.log(state.channels)
+        },
+        ChannelInfo(state, payload) {
+            state.channel.push(payload)
+        },
+       
+        nothing() { }
+    }
 const actions = {
     addChannel({ commit }, info) {
         return new Promise((resolve, reject) => {
@@ -80,7 +80,7 @@ const modules = {
 
 }
 const getters = {
-  
+
 }
 export default ({
     state,

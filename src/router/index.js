@@ -9,6 +9,7 @@ const ChannelsList = () => import('@/views/channel/ChannelsList')
 const NewChannel = () => import('@/views/channel/NewChannel')
 const NewAlbum = () => import('@/views/Album/NewAlbum')
 const ChannelDetail = () => import('@/views/channel/channelDetail')
+const albumDetail = () => import('@/views/Album/AlbumDetail')
 
 Vue.use(VueRouter)
 
@@ -59,6 +60,12 @@ Vue.use(VueRouter)
     path: '/channelDetail/:id',
     name: 'channelDetail',
     component: ChannelDetail
+  },
+  
+  {
+    path: '/albumDetail/:id',
+    name: 'albumDetail',
+    component: albumDetail
   },
 ]
 
