@@ -21,10 +21,13 @@ const mutations = {
 const actions = {
     ADD_ALBUM({ commit }, info) {
         return new Promise((resolve, reject) => {
+            console.log('info:')
+            console.log(info)
             commit('nothing')
             axios({ url: `${mainurl}/album`, data: info, method: 'POST' })
-            .then(res => {
+            .then(res => {               
                 resolve(res)
+                console.log(res.data)
             })
             .catch(err => {
                 reject(err)

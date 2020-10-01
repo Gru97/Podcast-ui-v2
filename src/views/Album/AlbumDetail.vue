@@ -20,16 +20,16 @@
                 </span>
               </v-list-item-title>
               <v-list-item-subtitle class="mt-5">
-                <v-icon color="#EF5554" left>mdi-group</v-icon>
+                <v-icon color="#FF1493" left>mdi-group</v-icon>
                 {{ album.category }} 
               </v-list-item-subtitle>
               <v-list-item-subtitle class="mt-3">
-                <v-icon color="#EF5554" left>mdi-information-outline</v-icon>
+                <v-icon color="#FF1493" left>mdi-information-outline</v-icon>
                 توضیحات :
                 {{ album.description }}
               </v-list-item-subtitle>
               <v-list-item-subtitle class="mt-3">
-                <v-icon color="#EF5554" left> mdi-account-alert</v-icon>
+                <v-icon color="#FF1493" left> mdi-account-alert</v-icon>
                 گره سنی :
                 {{ album.ageGroup }}
               </v-list-item-subtitle>
@@ -57,7 +57,7 @@
                   >
                     <v-progress-circular
                       indeterminate
-                      color="red"
+                      color="#FF1493"
                     ></v-progress-circular>
                   </v-row>
                 </template>
@@ -78,6 +78,9 @@
             <v-spacer></v-spacer>
           </v-card-action>
         </v-card>
+        <div style="text-align:center;" class="mt-7">
+          <NewPodcast :currentAlbumID="albumlId"/>
+          </div>
       </v-container>
     </v-main>
   </div>
@@ -85,10 +88,12 @@
 
 <script>
 import Sidebar from "@/components/Sidebar.vue";
+import NewPodcast from "@/views/Podcast/NewPodcast.vue";
 export default {
   name: "albumDetail",
   components: {
     Sidebar,
+    NewPodcast
   },
   data() {
     return {
@@ -148,7 +153,7 @@ export default {
   height: 30px;
 }
 .card-style {
-  border: 4px solid red;
+  border: 4px solid #4B0082;
   border-radius: 20px;
   width: 90%;
 }

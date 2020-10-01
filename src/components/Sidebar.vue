@@ -1,20 +1,23 @@
 <template>
   <div>
-    <v-navigation-drawer v-model="drawer" app right> 
+    <v-navigation-drawer v-model="drawer" app right>
       <v-list>
         <v-img
           :aspect-ratio="16 / 9"
-          src="https://cdn.vuetifyjs.com/images/parallax/material.jpg"
+          :src="img"
+          class="py-12"
         >
+         <!--
           <v-row align="end" class="lightbox white--text pa-2 fill-height">
             <v-col>
               <div class="body-1">ourpodcast.ir</div>
             </v-col>
           </v-row>
+          -->
         </v-img>
         <v-list-item v-for="item in items" :key="item.title" link>
           <v-list-item-icon>
-            <v-icon color="#EF5554">{{ item.icon }}</v-icon>
+            <v-icon color="#FF1493">{{ item.icon }}</v-icon>
           </v-list-item-icon>
 
           <v-list-item-content @click="gotothelink(item.url)">
@@ -24,11 +27,20 @@
       </v-list>
     </v-navigation-drawer>
 
-    <v-app-bar app color="#EF5554" dark class="navButton">
+     
+
+    <v-app-bar app dark class="navButton" height="100">
+    <template v-slot:img="{ props }">
+        <v-img
+          v-bind="props"
+          gradient="to top right, #4B0082, #FF1493"
+        ></v-img>
+      </template>
       <v-toolbar-title class="">
         <router-link :to="{ name: 'Login' }"
           ><span style="color: #fff">
-            <v-icon color="#fff" left>mdi-account-circle</v-icon>
+
+            <v-icon color="#FF1493" x-large left>mdi-account-circle</v-icon>
             ثبت نام/ورود</span
           ></router-link
         >
@@ -48,6 +60,7 @@ export default {
   },
   data: () => ({
     drawer: true,
+    img:require("@/assets/images/ourpodcast.jpg"),
     items: [
       { icon: "mdi-home", text: "صفحه اصلی", url: "Home" },
       {
@@ -61,12 +74,12 @@ export default {
         url: "",
       },
       {
-        icon: "mdi-folder-open",
+        icon: "mdi-star",
         text: "برترین کانال ها",
         url: "",
       },
       {
-        icon: "mdi-folder-open",
+        icon: "mdi-cloud-upload",
         text: "آپلود فایل",
         url: "ChannelsList",
       },
@@ -83,6 +96,15 @@ export default {
 <style scoped>
 .navButton {
   direction: ltr;
-  
+}
+.aaa{
+    color: darkred;
+background-image:
+    linear-gradient(
+      to right, 
+      #800080, 
+      #FF1493 85%
+      
+    );
 }
 </style>

@@ -5,7 +5,13 @@
       <v-container class="fill-height" fluid>
         <v-row align="center" justify="center">
           <v-card class="elevation-12 mx-auto" width="50%" outlined>
-            <v-toolbar color="#EF5554" dark flat>
+            <v-toolbar  dark >
+              <template v-slot:img="{ props }">
+                <v-img
+                  v-bind="props"
+                  gradient="to top right, #4B0082, #FF1493"
+                ></v-img>
+              </template>
               <v-toolbar-title>عضویت در سایت</v-toolbar-title>
               <v-spacer></v-spacer>
             </v-toolbar>
@@ -42,7 +48,7 @@
                 <v-img
                   height="300"
                   width="300"
-                  src="https://cdn.vuetifyjs.com/images/cards/docks.jpg"
+                  :src="img"
                 ></v-img>
               </v-list-item-avatar>
             </v-list-item>
@@ -51,14 +57,14 @@
               <v-spacer></v-spacer>
              
               <v-btn
-                color="#EF5554"
+                color="#FF1493"
                 class="vbtn"
                 :loading="loading"
                 @click="register"
               >
                 <v-icon left>mdi-account-check</v-icon>ثبت نام</v-btn
               >
-               <v-btn color="#EF5554" text @click="login">ورود</v-btn>
+               <v-btn color="#FF1493" text @click="login">ورود</v-btn>
             </v-card-actions>
           </v-card>
         </v-row>
@@ -83,6 +89,8 @@ export default {
       password: "",
       confirmPassword: "",
       loading: false,
+      img: require("@/assets/images/logoo.png"),
+
     };
   },
   methods: {

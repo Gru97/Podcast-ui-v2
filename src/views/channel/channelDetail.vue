@@ -22,7 +22,7 @@
                 </span>
               </v-list-item-title>
               <v-list-item-subtitle>
-                <v-icon color="#EF5554" left>mdi-human-greeting</v-icon>
+                <v-icon color="#FF1493" left>mdi-human-greeting</v-icon>
                 {{ channel.followers }} دنبال کننده
               </v-list-item-subtitle>
               <v-list-item-subtitle>{{
@@ -60,11 +60,12 @@
           <v-card-actions>
             <v-btn
               small
-              color="#EF5554"
+              color="#FF1493"
               rounded
+              class="white--text"
               @click="createNewAlbum(channel.id)"
             >
-              <v-icon color="#fff" left>mdi-plus-circle-outline</v-icon>آلبوم
+              <v-icon color="white" left>mdi-plus-circle-outline</v-icon>آلبوم
               جدید
             </v-btn>
           </v-card-actions>
@@ -78,13 +79,13 @@
     <div style="text-align: center" class="mb-12">
       <v-btn
         class="btn-content"
-        color="#EF5554"
+        color="#4B0082"
         rounded
         outlined
         block
         @click="createNewAlbum(channel.id)"
       >
-        <v-icon color="#EF5554" left>mdi-plus-circle-outline</v-icon>آلبوم جدید
+        <v-icon color="#4B0082" left>mdi-plus-circle-outline</v-icon>آلبوم جدید
       </v-btn>
     </div>
   </div>
@@ -147,7 +148,7 @@ export default {
   height: 30px;
 }
 .card-style {
-  border: 4px solid red;
+  border: 4px solid #4B0082;
   border-radius: 20px;
   width: 90%;
 }

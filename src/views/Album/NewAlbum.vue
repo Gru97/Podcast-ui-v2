@@ -7,7 +7,7 @@
           <v-row>
             <v-col>
               <v-card>
-                <v-card-title style="color:#EF5554;">مدیریت / ویرایش آلبوم</v-card-title>
+                <v-card-title style="color:#4B0082;">مدیریت / ویرایش آلبوم</v-card-title>
                 <v-form>
                   <v-container>
                     <v-row>
@@ -111,7 +111,7 @@
                         ></v-text-field>
                       </v-col>
                       <v-col cols="1" class="col-add-tag">
-                        <v-btn small fab color="#EF5554" @click="addTag()">
+                        <v-btn small fab color="#FF1493" @click="addTag()">
                           <v-icon color="white">mdi-plus</v-icon>
                         </v-btn>
                       </v-col>
@@ -132,9 +132,10 @@
                       <v-col cols="12">
                         <v-btn
                           class="float-lg-left white--text"
-                          color="#EF5554"
+                          color="#FF1493"
                           @click="addAlbum"
                           :loading="loading"
+                          rounded
                         >
                           <v-icon color="white" left>mdi-check-circle-outline</v-icon>ثبت
                         </v-btn>

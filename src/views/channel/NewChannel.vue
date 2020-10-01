@@ -3,90 +3,89 @@
     <Sidebar />
 
     <v-main>
-      <v-container style="padding-top: 50px;">
+      <v-container style="padding-top: 50px">
         <v-form v-model="valid">
-        
-              <v-card width="100%" class="card-style">
-                <v-card-title style="color: #ef5554"
-                  >مدیریت / ویرایش کانال
-                </v-card-title>
-                <v-form>
-                  <v-container>
+          <v-card width="100%" class="card-style">
+            <v-card-title style="color: #4B0082"
+              >مدیریت / ویرایش کانال
+            </v-card-title>
+            <v-form>
+              <v-container>
+                <v-row>
+                  <v-col cols="8">
+                    <v-text-field
+                      label="    عنوان کانال  "
+                      prepend-icon="mdi-bookmark-check"
+                      v-model="name"
+                      required
+                      :rules="Rules"
+                      outlined
+                    ></v-text-field>
+
+                    <v-textarea
+                      style="padding-top: 50px"
+                      filled:true
+                      prepend-icon="mdi-information"
+                      outlined
+                      lable="توضیحات"
+                      Rounded:true
+                      placeholder="توضیحات"
+                      shaped:true
+                      v-model="description"
+                    ></v-textarea>
+                  </v-col>
+
+                  <v-col cols="3">
                     <v-row>
-                      <v-col cols="8">
-                        <v-text-field
-                          label="    عنوان کانال  "
-                          prepend-icon="mdi-bookmark-check"
-                          v-model="name"
-                          required
-                          :rules="Rules"
-                          outlined
-                        ></v-text-field>
-
-                        <v-textarea
-                        style="padding-top:50px"
-                          filled:true
-                          prepend-icon="mdi-information"
-                          outlined
-                          lable="توضیحات"
-                          Rounded:true
-                          placeholder="توضیحات"
-                          shaped:true
-                          v-model="description"
-                        ></v-textarea>
-                      </v-col>
-
-                      <v-col cols="3">
-                        <v-row>
-                          <v-file-input
-                            id="fileInput"
-                            accept="image/*"
-                            v-model="image"
-                            placeholder="انتخاب تصویر"
-                            multiple
-                            prepend-icon="mdi-camera"
-                            @change="handleImage(image)"
-                            require
-                            :rules="Rules"
-                          >
-                            <template v-slot:selection="{ text }">
-                              <v-chip label color="#EF5554" outlined>
-                                <v-icon left color="#EF5554">mdi-star</v-icon>
-                                {{ text }}
-                              </v-chip>
-                            </template>
-                          </v-file-input>
-                        </v-row>
-                        <v-row></v-row>
-                        <img
-                          v-bind:src="previewSrc"
-                          width="270"
-                          height="270"
-                          style="position: absolute; cursor: pointer"
-                          v-on:click="callFile"
-                        />
-                      </v-col>
+                      <v-file-input
+                        id="fileInput"
+                        accept="image/*"
+                        v-model="image"
+                        placeholder="انتخاب تصویر"
+                        multiple
+                        prepend-icon="mdi-camera"
+                        @change="handleImage(image)"
+                        require
+                        :rules="Rules"
+                      >
+                        <template v-slot:selection="{ text }">
+                          <v-chip label color="#EF5554" outlined>
+                            <v-icon left color="#EF5554">mdi-star</v-icon>
+                            {{ text }}
+                          </v-chip>
+                        </template>
+                      </v-file-input>
                     </v-row>
-                  <v-row style="height: 60px;" ></v-row>
-                    <v-row class="pt-12">
-                      <v-col cols="12">
-                        <v-btn
-                          class="float-lg-left white--text"
-                          color="#EF5554"
-                          @click="addChannel()"
-                          :loading="loading"
-                          large
-                        >
-                          <v-icon color="white" left class="row-submit-btn"
-                            >mdi-check-circle-outline</v-icon
-                          >ثبت
-                        </v-btn>
-                      </v-col>
-                    </v-row>
-                  </v-container>
-                </v-form>
-              </v-card>
-
+                    <v-row></v-row>
+                    <img
+                      v-bind:src="previewSrc"
+                      width="270"
+                      height="270"
+                      style="position: absolute; cursor: pointer"
+                      v-on:click="callFile"
+                    />
+                  </v-col>
+                </v-row>
+                <v-row style="height: 60px"></v-row>
+                <v-row class="pt-12">
+                  <v-col cols="12">
+                    <v-btn
+                      class="float-lg-left white--text"
+                      color="#FF1493"
+                      @click="addChannel()"
+                      :loading="loading"
+                      rounded
+                      x-large
+                    >
+                      <v-icon color="white" left class="row-submit-btn"
+                        >mdi-check-circle-outline</v-icon
+                      >ثبت
+                    </v-btn>
+                  </v-col>
+                </v-row>
+              </v-container>
+            </v-form>
+          </v-card>
         </v-form>
       </v-container>
     </v-main>
@@ -145,6 +144,7 @@ export default {
           this.loading = false;
         });
     },
+
     handleImage(file) {
       let reader = new FileReader();
       reader.readAsDataURL(file[0]);
@@ -167,11 +167,9 @@ export default {
 </script>
 
 <style scoped>
-
 .card-style {
-  border: 4px solid red;
+  border: 4px solid #FF1493;
   border-radius: 20px;
   width: 90%;
 }
-
 </style>

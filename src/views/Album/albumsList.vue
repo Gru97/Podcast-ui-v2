@@ -32,9 +32,11 @@
                 </v-card-subtitle>
 
                 <v-card-actions>
-                  <v-btn color="#EF5554" text @click="albumDetail(item.id)">مشاهده</v-btn>
+                  <v-btn color="#4B0082" text @click="albumDetail(item.id)">
+                    <v-icon color="#FF1493" right>mdi-information-outline</v-icon>مشاهده</v-btn>
 
-                  <v-btn color="#EF5554" text @click="deleteAlbum(item.id)" >حذف</v-btn>
+                  <v-btn color="#4B0082" text @click="deleteAlbum(item.id)" >
+                    <v-icon color="#FF1493" right>mdi-delete</v-icon>حذف</v-btn>
                 </v-card-actions>
               </v-card>
             </v-flex>

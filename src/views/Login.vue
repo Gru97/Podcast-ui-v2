@@ -5,7 +5,13 @@
       <v-container class="fill-height" fluid>
         <v-row align="center" justify="center">
           <v-card class="elevation-12 mx-auto" width="50%" outlined>
-            <v-toolbar color="#EF5554" dark flat>
+            <v-toolbar dark height="65">
+              <template v-slot:img="{ props }">
+                <v-img
+                  v-bind="props"
+                  gradient="to top right, #4B0082, #FF1493"
+                ></v-img>
+              </template>
               <v-toolbar-title>ورود به سایت</v-toolbar-title>
               <v-spacer></v-spacer>
             </v-toolbar>
@@ -28,22 +34,18 @@
                   ></v-text-field>
                 </v-form>
               </v-list-item-content>
-              <v-list-item-avatar tile size="250" color="grey">
-                <v-img
-                  height="300"
-                  width="300"
-                  src="https://cdn.vuetifyjs.com/images/cards/docks.jpg"
-                ></v-img>
+              <v-list-item-avatar tile size="250" color="white">
+                <v-img height="300" width="300" :src="img"></v-img>
               </v-list-item-avatar>
             </v-list-item>
             <v-card-text> </v-card-text>
             <v-card-actions>
               <v-spacer></v-spacer>
-              <v-btn color="#EF5554" text @click="register" width="50"
+              <v-btn color="#FF1493" text @click="register" width="50"
                 >ثبت نام</v-btn
               >
               <v-btn
-                color="#EF5554"
+                color="#FF1493"
                 class="vbtn"
                 :loading="loading"
                 @click="login"
@@ -73,6 +75,7 @@ export default {
       email: null,
       password: null,
       loading: false,
+      img: require("@/assets/images/logoo.png"),
     };
   },
 
